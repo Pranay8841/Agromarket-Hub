@@ -21,7 +21,7 @@ exports.createProduct = async (req, res) => {
 
         const tag = JSON.parse(_tag);
 
-        console.log("Tag for Prodcut", tag);
+        console.log("Tag for Product", tag);
 
         if (
             !productName ||
@@ -160,8 +160,121 @@ exports.editProduct = async (req, res) => {
 
         await product.save();
 
-        
-    } catch (error) {
+        const updatedProduct = await Product.findOne({
+            _id: productId,
+        })
+            .populate({
+                path: "dealer",
+                populate: {
+                    path: "additionalDetails",
+                },
+            })
+            .populate("category")
+            .exec()
 
+        res.json({
+            success: true,
+            message: "Product updated successfully",
+            data: updatedProduct,
+        })
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            success: false,
+            message: "Error Occured While Editing Product",
+            error: error.message,
+        })
+    }
+}
+
+exports.getAllProducts = async (req, res) => {
+    try {
+        const allProducts = await Product.find(
+            {
+                status: "Available",
+            },
+            {
+                productName: true,
+                price: true,
+                thumbnail: true,
+                dealer: true,
+                quantityAvailable: true,
+            }
+        ).populate("dealer").exec();
+
+        return res.status(200).json({
+            success: true,
+            data: allProducts,
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(404).json({
+            success: false,
+            message: `Can't Fetch Product Data`,
+            error: error.message,
+        })
+    }
+}
+
+exports.getProductDetails = async (req, res) => {
+    try {
+        const { productId } = req.body;
+        const productDetails = await Product.findOne({
+            _id: productId,
+        })
+            .populate({
+                path: "dealer",
+                populate: {
+                    path: "additionalDetails",
+                },
+            })
+            .populate("category")
+            .exec();
+
+        if (!productDetails) {
+            return res.status(400).json({
+                success: false,
+                message: `Could not find course with id: ${productId}`,
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            data: productDetails,
+            message: "Able to Get Product Details"
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        })
+    }
+}
+
+exports.deleteProduct = async (req, res) => {
+    try {
+        const { productId } = req.body;
+
+        const product = await Product.findById(productId)
+
+        if (!product) {
+            return res.status(404).json({
+                message: "Product not found"
+            })
+        }
+
+        await Product.findByIdAndDelete(productId);
+
+        return res.status(200).json({
+            success: true,
+            message: "Product deleted successfully",
+        })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({
+            success: false,
+            message: "Error Occured While Deleting The Product",
+            error: error.message,
+        })
     }
 }
