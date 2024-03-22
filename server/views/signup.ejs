@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>Signup Page</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+
+    <div class="container mt-4">
+      <form
+        action="/api/user/signup"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Enter your name</label>
+          <input
+            type="text"
+            name="username"
+            class="form-control"
+            id="username"
+            aria-describedby="username"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="text"
+            name="email"
+            class="form-control"
+            id="email"
+            aria-describedby="email"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="text"
+            name="password"
+            class="form-control"
+            id="password"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="profileImageURL" class="form-label">Profile Image</label>
+          <input
+            type="file"
+            name="profileImageURL"
+            class="form-control"
+            id="profileImageURL"
+            aria-describedby="profileImageURL"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="roles">Choose user role:</label>
+          <select name="roles" id="roles">
+            <option value="FARMER">Farmer</option>
+            <option value="DEALER">Dealer</option>
+            <option value="SHOP-KEEPER">Shop-keeper</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text">Address</span>
+            <textarea
+              class="form-control"
+              name="address"
+              id="address"
+            ></textarea>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="contact" class="form-label">Contact</label>
+          <input
+            type="text"
+            name="contact"
+            class="form-control"
+            id="contact"
+            aria-describedby="contact"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <%- include("./partials/scripts") %>
+  </body>
+</html>

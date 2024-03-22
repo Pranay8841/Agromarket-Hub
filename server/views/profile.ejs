@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>User Profile</title>
+
+    <!-- Include Tailwind CSS from CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-sans bg-gray-100">
+    <%- include("./partials/nav") %>
+
+    <div class="w-full max-w-xl container mx-auto">
+      <h1 class="text-2xl font-semibold mb-4">User Profile</h1>
+
+      <form
+        action="/api/user/update"
+        method=""
+        enctype="multipart/form-data"
+        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
+        <div class="mb-4">
+          <label for="username" class="block text-sm font-medium text-gray-700"
+            >Name</label
+          >
+          <input
+            type="text"
+            name="username"
+            class="mt-1 p-2 border rounded-md w-full"
+            id="username"
+            aria-describedby="username"
+            value="<%= user.username %>"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email</label
+          >
+          <input
+            type="text"
+            name="email"
+            class="mt-1 p-2 border rounded-md w-full"
+            id="email"
+            aria-describedby="email"
+            value="<%= user.email %>"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700"
+            >Your Role: <%= user.roles %></label
+          >
+        </div>
+
+        <div class="mb-4">
+          <label for="address" class="block text-sm font-medium text-gray-700"
+            >Address</label
+          >
+          <textarea
+            class="mt-1 p-2 border rounded-md w-full"
+            name="address"
+            id="address"
+          >
+<%= user.address %></textarea
+          >
+        </div>
+
+        <div class="mb-4">
+          <label for="contact" class="block text-sm font-medium text-gray-700"
+            >Contact</label
+          >
+          <input
+            type="text"
+            name="contact"
+            class="mt-1 p-2 border rounded-md w-full"
+            id="contact"
+            aria-describedby="contact"
+            value="<%= user.contact %>"
+          />
+        </div>
+
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+        <a
+          href="/"
+          class="inline-block bg-blue-500 text-white px-4 py-2 rounded"
+          >Back &raquo;</a
+        >
+      </form>
+    </div>
+
+    <%- include("./partials/scripts") %>
+  </body>
+</html>
