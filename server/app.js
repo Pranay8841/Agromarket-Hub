@@ -7,6 +7,7 @@ const app = express();
 
 const userRoutes = require("./routes/userRoute.js")
 const profileRoutes = require("./routes/profileRoute.js");
+const productRoutes = require("./routes/productRoute.js")
 const fileUpload = require("express-fileupload");
 const { cloudinaryConnect } = require("./config/cloudinary.js");
 
@@ -38,6 +39,7 @@ cloudinaryConnect();
 // Routes
 app.use("/api/v1/auth", userRoutes)
 app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/product", productRoutes)
 
 
 app.get("/", (req, res) => {
