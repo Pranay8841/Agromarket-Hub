@@ -35,6 +35,9 @@ const productsSchema = new mongoose.Schema({
         type: Number, 
         default: 0 
     },
+    benefits: {
+        type: String,
+    },
     createdAt: {
         type: Date,
         default: Date.now

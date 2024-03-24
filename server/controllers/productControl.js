@@ -15,6 +15,7 @@ exports.createProduct = async (req, res) => {
             category,
             status,
             quantityAvailable,
+            benefits,
         } = req.body;
 
         const thumbnail = req.files.thumbnailImage;
@@ -30,7 +31,8 @@ exports.createProduct = async (req, res) => {
             !tag.length ||
             !thumbnail ||
             !category ||
-            !quantityAvailable
+            !quantityAvailable ||
+            !benefits
         ) {
             return res.status(400).json({
                 success: false,
@@ -78,6 +80,7 @@ exports.createProduct = async (req, res) => {
             thumbnail: thumbnailImage.secure_url,
             status: status,
             quantityAvailable,
+            benefits: benefits,
         });
 
         await User.findByIdAndUpdate(
