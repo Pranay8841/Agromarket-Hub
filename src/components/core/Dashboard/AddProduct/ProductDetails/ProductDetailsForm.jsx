@@ -4,6 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addProductDetails, editProductDetails, fetchProductCategories } from '../../../../../services/operations/ProductAPI';
 import { setProduct, setStep } from '../../../../../slices/productSlice';
 import toast from 'react-hot-toast';
+import { HiOutlineCurrencyRupee } from "react-icons/hi"
+import { MdNavigateNext } from "react-icons/md"
+import ChipInput from './ChipInput';
+import Upload from '../Upload';
+import IconButton from "../../../../common/IconButton"
 
 const ProductDetailsForm = () => {
   const {
@@ -139,10 +144,193 @@ const ProductDetailsForm = () => {
     setLoading(false);
   }
   return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-8 rounded-md border-[1px] border-richblue-300 bg-richblue-400 p-6"
+    >
+      {/* Product Title */}
+      <div className="flex flex-col space-y-2">
+        <label className="text-sm text-white" htmlFor="productTitle">
+          Product Name <sup className="text-pink-200">*</sup>
+        </label>
 
-    <div>
+        <input
+          id="productTitle"
+          placeholder="Enter Product Name"
+          {...register("productTitle", { required: true })}
+          className="w-full rounded-[0.5rem] bg-white p-[10px] text-richblack-700 border border-richblue-400"
+        />
+        {
+          errors.productTitle && (
+            <span className="ml-2 text-xs tracking-wide text-pink-200">
+              Product Name is required
+            </span>
+          )
+        }
+      </div>
 
-    </div>
+      {/* Product Short Description */}
+      <div className="flex flex-col space-y-2">
+        <label className="text-sm text-white" htmlFor="productShortDesc">
+          Product Description <sup className="text-pink-200">*</sup>
+        </label>
+
+        <textarea
+          id="productShortDesc"
+          placeholder="Enter Product Description"
+          {...register("productShortDesc", { required: true })}
+          className="resize-x-none min-h-[130px] w-full rounded-[0.5rem] bg-white p-[10px] text-richblack-700 border border-richblue-400"
+        />
+
+        {errors.productShortDesc && (
+          <span className="ml-2 text-xs tracking-wide text-pink-200">
+            Product Description is required
+          </span>
+        )}
+
+      </div>
+
+      {/* Product Price */}
+      <div className="flex flex-col space-y-2">
+        <label className="text-sm text-white" htmlFor="productPrice">
+          Product Price <sup className="text-pink-200">*</sup>
+        </label>
+
+        <div className="relative">
+          <input
+            id="productPrice"
+            placeholder="Enter Product Price"
+            {...register("productPrice", {
+              required: true,
+              valueAsNumber: true,
+              pattern: {
+                value: /^(0|[1-9]\d*)(\.\d+)?$/,
+              },
+            })}
+            className="!pl-12 w-full rounded-[0.5rem] bg-white p-[10px] text-richblack-700 border border-richblue-400"
+          />
+          <HiOutlineCurrencyRupee className="absolute left-3 top-1/2 inline-block -translate-y-1/2 text-2xl text-richblack-700" />
+        </div>
+
+        {errors.coursePrice && (
+          <span className="ml-2 text-xs tracking-wide text-pink-200">
+            Product Price is required
+          </span>
+        )}
+      </div>
+
+      {/* Product Category */}
+      <div className="flex flex-col space-y-2">
+        <label className="text-sm text-white" htmlFor="productCategory">
+          Product Category <sup className="text-pink-200">*</sup>
+        </label>
+
+        <select
+          {...register("productCategory", { required: true })}
+          defaultValue=""
+          id="productCategory"
+          className="w-full rounded-[0.5rem] bg-white p-[10px] text-richblack-700 border border-richblue-400"
+        >
+          <option value="" disabled>
+            Choose a Product Category
+          </option>
+
+          {!loading &&
+            productCategories?.map((category, index) => (
+              <option key={index} value={category?._id}>
+                {category?.name}
+              </option>
+            ))}
+        </select>
+        {errors.productCategory && (
+          <span className="ml-2 text-xs tracking-wide text-pink-200">
+            Product Category is required
+          </span>
+        )}
+      </div>
+
+      {/* Course Tags */}
+      <ChipInput
+        label="Tags"
+        name="productTags"
+        placeholder="Enter Tags and press Enter"
+        register={register}
+        errors={errors}
+        setValue={setValue}
+        getValues={getValues}
+      />
+
+      {/* Course Thumbnail Image */}
+      <Upload
+        name="productImage"
+        label="Product Image"
+        register={register}
+        setValue={setValue}
+        errors={errors}
+        editData={editProduct ? product?.thumbnail : null}
+      />
+
+      {/* Benefits of the course */}
+      <div className="flex flex-col space-y-2">
+        <label className="text-sm text-white" htmlFor="productBenefits">
+          Benefits of the Product <sup className="text-pink-200">*</sup>
+        </label>
+
+        <textarea
+          id="productBenefits"
+          placeholder="Enter benefits of the Product"
+          {...register("productBenefits", { required: true })}
+          className="resize-x-none min-h-[130px] w-full rounded-[0.5rem] bg-white p-[10px] text-richblack-700 border border-richblue-400"
+        />
+        {errors.productBenefits && (
+          <span className="ml-2 text-xs tracking-wide text-pink-200">
+            Benefits of the Product is required
+          </span>
+        )}
+      </div>
+
+      {/* Product Quantity */}
+      <div className="flex flex-col space-y-2">
+        <label className="text-sm text-white" htmlFor="productQuantity">
+          Product Quantity <sup className="text-pink-200">*</sup>
+        </label>
+
+        <input
+          type='number'
+          id="productQuantity"
+          placeholder="Enter Product Quantity"
+          {...register("productQuantity", { required: true })}
+          className="w-full rounded-[0.5rem] bg-white p-[10px] text-richblack-700 border border-richblue-400"
+        />
+        {
+          errors.productQuantity && (
+            <span className="ml-2 text-xs tracking-wide text-pink-200">
+              Product Quantity is required
+            </span>
+          )
+        }
+      </div>
+
+      {/* Next Button */}
+      <div className="flex justify-end gap-x-2">
+        {editProduct && (
+          <button
+            onClick={() => dispatch(setStep(2))}
+            disabled={loading}
+            className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
+          >
+            Continue Wihout Saving
+          </button>
+        )}
+
+        <IconButton
+          disabled={loading}
+          text={!editProduct ? "Next" : "Save Changes"}
+        >
+          <MdNavigateNext />
+        </IconButton>
+      </div>
+    </form>
   )
 }
 
