@@ -13,7 +13,6 @@ import Dashboard from "./pages/Dashboard";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Error from "./pages/Error";
 import Settings from "./components/core/Dashboard/Settings";
-import AboutUs from "./components/common/AboutUs";
 import { useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import AddProduct from "./components/core/Dashboard/AddProduct";
