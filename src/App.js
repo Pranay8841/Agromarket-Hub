@@ -1,24 +1,26 @@
-import React from 'react'
-import Navbar from './components/common/Navbar'
-import { Route, Routes } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import VerifyEmail from './pages/VerifyEmail'
-import ForgotPassword from './pages/ForgotPassword'
-import OpenRoute from './components/core/Auth/OpenRoute'
-import UpdatePassword from './pages/UpdatePassword'
-import PrivateRoute from './components/core/Auth/PrivateRoute'
-import Dashboard from './pages/Dashboard'
-import MyProfile from './components/core/Dashboard/MyProfile'
-import Error from './pages/Error'
-import Settings from './components/core/Dashboard/Settings'
-import { useSelector } from 'react-redux'
-import { ACCOUNT_TYPE } from './utils/constants'
-import AddProduct from './components/core/Dashboard/AddProduct'
+import React from "react";
+import Navbar from "./components/common/Navbar";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import VerifyEmail from "./pages/VerifyEmail";
+import ForgotPassword from "./pages/ForgotPassword";
+import OpenRoute from "./components/core/Auth/OpenRoute";
+import UpdatePassword from "./pages/UpdatePassword";
+import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import Dashboard from "./pages/Dashboard";
+import MyProfile from "./components/core/Dashboard/MyProfile";
+import Error from "./pages/Error";
+import Settings from "./components/core/Dashboard/Settings";
+import AboutUs from "./components/common/AboutUs";
+import { useSelector } from "react-redux";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import AddProduct from "./components/core/Dashboard/AddProduct";
 import MyProducts from './components/core/Dashboard/MyProducts'
 import AboutUs from './components/common/AboutUs'
 import EditProduct from './components/core/Dashboard/EditProduct'
+import Blog from "./components/common/Blog";
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
@@ -49,6 +51,7 @@ const App = () => {
         />
 
         <Route path="about" element={<AboutUs />} />
+        <Route path="blog" element={<Blog />} />
 
         <Route
           path="forgot-password"
