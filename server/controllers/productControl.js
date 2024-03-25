@@ -254,6 +254,76 @@ exports.getProductDetails = async (req, res) => {
     }
 }
 
+exports.getFullProductDetails = async (req, res) => {
+    try {
+        const { productId } = req.body
+        // const userId = req.user.id
+        const productDetails = await Product.findOne({
+            _id: productId,
+        })
+            .populate({
+                path: "dealer",
+                populate: {
+                    path: "additionalDetails",
+                },
+            })
+            .populate("category")
+            .exec()
+
+        if (!productDetails) {
+            return res.status(400).json({
+                success: false,
+                message: `Could not find course with id: ${productId}`,
+            })
+        }
+
+        // if (courseDetails.status === "Draft") {
+        //   return res.status(403).json({
+        //     success: false,
+        //     message: `Accessing a draft course is forbidden`,
+        //   });
+        // }
+
+        return res.status(200).json({
+            success: true,
+            data: {
+                productDetails,
+            },
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        })
+    }
+}
+
+// Get a list of Products for a given Dealer
+exports.getDealerProducts = async (req, res) => {
+    try {
+        // Get the Dealer ID from the authenticated user or request body
+        const dealerId = req.user.id
+
+        // Find all Products belonging to the Dealer
+        const dealerProducts = await Product.find({
+            dealer: dealerId,
+        }).sort({ createdAt: -1 })
+
+        // Return the dealer's products
+        res.status(200).json({
+            success: true,
+            data: dealerProducts,
+        })
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            success: false,
+            message: "Failed to retrieve dealer products",
+            error: error.message,
+        })
+    }
+}
+
 exports.deleteProduct = async (req, res) => {
     try {
         const { productId } = req.body;
