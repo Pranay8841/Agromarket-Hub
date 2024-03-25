@@ -14,6 +14,7 @@ import MyProfile from "./components/core/Dashboard/MyProfile";
 import Error from "./pages/Error";
 import Settings from "./components/core/Dashboard/Settings";
 import AboutUs from "./components/common/AboutUs";
+import Blog from "./components/common/Blog";
 import { useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import AddProduct from "./components/core/Dashboard/AddProduct";
@@ -47,6 +48,7 @@ const App = () => {
         />
 
         <Route path="about" element={<AboutUs />} />
+        <Route path="blog" element={<Blog />} />
 
         <Route
           path="forgot-password"
