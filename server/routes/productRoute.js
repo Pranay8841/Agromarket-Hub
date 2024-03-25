@@ -7,6 +7,8 @@ const {
     editProduct,
     getAllProducts,
     getProductDetails,
+    getDealerProducts,
+    getFullProductDetails,
     deleteProduct,
 } = require("../controllers/productControl")
 
@@ -30,7 +32,11 @@ router.get("/getAllProducts", getAllProducts);
 
 router.post("/getProductDetails", getProductDetails);
 
+router.post("/getFullProductDetails", getFullProductDetails);
+
 router.post("/editProduct", auth, isDealer, editProduct);
+
+router.get("/getDealerProducts", auth, isDealer, getDealerProducts);
 
 router.delete("/deleteProduct", deleteProduct);
 
