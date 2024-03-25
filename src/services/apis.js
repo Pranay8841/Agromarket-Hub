@@ -17,6 +17,8 @@ export const productEndpoints = {
   EDIT_PRODUCT_API: BASE_URL + "/api/v1/product/editProduct",
   DELETE_PRODUCT_API: BASE_URL + "/api/v1/product/deleteProduct",
   PRODUCT_CATEGORIES_API: BASE_URL + "/api/v1/product/showAllCategories",
+  GET_ALL_DEALER_PRODUCTS_API: BASE_URL + "/api/v1/product/getDealerProducts",
+  GET_FULL_PRODUCT_DETAILS_AUTHENTICATED: BASE_URL + "/api/v1/product/getFullProductDetails",
 }
 
 // CATAGORIES API

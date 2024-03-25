@@ -10,7 +10,9 @@ const {
     PRODUCT_DETAILS_API,
     EDIT_PRODUCT_API,
     DELETE_PRODUCT_API,
-    PRODUCT_CATEGORIES_API
+    PRODUCT_CATEGORIES_API,
+    GET_ALL_DEALER_PRODUCTS_API,
+    GET_FULL_PRODUCT_DETAILS_AUTHENTICATED,
 } = productEndpoints;
 
 
@@ -118,21 +120,79 @@ export const editProductDetails = async (data, token) => {
     return result
 }
 
+// fetching all products under a specific dealer
+export const fetchDealerProducts = async (token) => {
+    let result = []
+    const toastId = toast.loading("Loading...")
+    try {
+        const response = await apiConnector(
+            "GET",
+            GET_ALL_DEALER_PRODUCTS_API,
+            null,
+            {
+                Authorization: `Bearer ${token}`,
+            }
+        )
+        console.log("DEALER PRODUCTS API RESPONSE............", response)
+        if (!response?.data?.success) {
+            throw new Error("Could Not Fetch Dealer Products")
+        }
+        result = response?.data?.data
+    } catch (error) {
+        console.log("DEALER PRODUCTS API ERROR............", error)
+        toast.error(error.message)
+    }
+    toast.dismiss(toastId)
+    return result
+}
+
+// get full details of a Product
+export const getFullDetailsOfProduct = async (productId, token) => {
+    const toastId = toast.loading("Loading...")
+    //   dispatch(setLoading(true));
+    let result = null
+    try {
+      const response = await apiConnector(
+        "POST",
+        GET_FULL_PRODUCT_DETAILS_AUTHENTICATED,
+        {
+          productId,
+        },
+        {
+          Authorization: `Bearer ${token}`,
+        }
+      )
+      console.log("PRODUCT_FULL_DETAILS_API API RESPONSE............", response)
+  
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+      result = response?.data?.data
+    } catch (error) {
+      console.log("PRODUCT_FULL_DETAILS_API API ERROR............", error)
+      result = error.response.data
+      // toast.error(error.response.data.message);
+    }
+    toast.dismiss(toastId)
+    //   dispatch(setLoading(false));
+    return result
+  }
+
 // delete a product
 export const deleteProduct = async (data, token) => {
     const toastId = toast.loading("Loading...")
     try {
-      const response = await apiConnector("DELETE", DELETE_PRODUCT_API, data, {
-        Authorization: `Bearer ${token}`,
-      })
-      console.log("DELETE PRODUCT API RESPONSE............", response)
-      if (!response?.data?.success) {
-        throw new Error("Could Not Delete Product")
-      }
-      toast.success("Product Deleted Successfully")
+        const response = await apiConnector("DELETE", DELETE_PRODUCT_API, data, {
+            Authorization: `Bearer ${token}`,
+        })
+        console.log("DELETE PRODUCT API RESPONSE............", response)
+        if (!response?.data?.success) {
+            throw new Error("Could Not Delete Product")
+        }
+        toast.success("Product Deleted Successfully")
     } catch (error) {
-      console.log("DELETE PRODUCT API ERROR............", error)
-      toast.error(error.message)
+        console.log("DELETE PRODUCT API ERROR............", error)
+        toast.error(error.message)
     }
     toast.dismiss(toastId)
-  }
+}
