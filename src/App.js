@@ -17,6 +17,8 @@ import { useSelector } from 'react-redux'
 import { ACCOUNT_TYPE } from './utils/constants'
 import AddProduct from './components/core/Dashboard/AddProduct'
 import MyProducts from './components/core/Dashboard/MyProducts'
+import AboutUs from './components/common/AboutUs'
+import EditProduct from './components/core/Dashboard/EditProduct'
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
@@ -91,6 +93,7 @@ const App = () => {
               <>
                 <Route path='dashboard/add-product' element={<AddProduct />} />
                 <Route path='dashboard/my-products' element={<MyProducts />} />
+                <Route path='dashboard/edit-product/:productId' element={<EditProduct />} />
               </>
             )
           }
