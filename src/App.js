@@ -19,18 +19,17 @@ import AddProduct from './components/core/Dashboard/AddProduct'
 import MyProducts from './components/core/Dashboard/MyProducts'
 
 const App = () => {
-
-  const { user } = useSelector((state) => state.profile)
+  const { user } = useSelector((state) => state.profile);
 
   return (
-    <div className='w-screen min-h-screen bg-richblue-700 flex flex-col font-inter'>
+    <div className="w-screen min-h-screen bg-richblue-700 flex flex-col font-inter">
       <Navbar />
 
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
 
         <Route
-          path='signup'
+          path="signup"
           element={
             <OpenRoute>
               <Signup />
@@ -39,7 +38,7 @@ const App = () => {
         />
 
         <Route
-          path='login'
+          path="login"
           element={
             <OpenRoute>
               <Login />
@@ -47,8 +46,10 @@ const App = () => {
           }
         />
 
+        <Route path="about" element={<AboutUs />} />
+
         <Route
-          path='forgot-password'
+          path="forgot-password"
           element={
             <OpenRoute>
               <ForgotPassword />
@@ -57,7 +58,7 @@ const App = () => {
         />
 
         <Route
-          path='verify-email'
+          path="verify-email"
           element={
             <OpenRoute>
               <VerifyEmail />
@@ -74,14 +75,16 @@ const App = () => {
           }
         />
 
-        <Route element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        }>
-          <Route path='dashboard/my-profile' element={<MyProfile />} />
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
 
-          <Route path='dashboard/Settings' element={<Settings />} />
+          <Route path="dashboard/Settings" element={<Settings />} />
 
           {
             user?.accountType === ACCOUNT_TYPE.DEALER && (
@@ -96,7 +99,7 @@ const App = () => {
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
