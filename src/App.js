@@ -19,6 +19,7 @@ import AddProduct from './components/core/Dashboard/AddProduct'
 import MyProducts from './components/core/Dashboard/MyProducts'
 import AboutUs from './components/common/AboutUs'
 import EditProduct from './components/core/Dashboard/EditProduct'
+import Category from './pages/Category'
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
@@ -29,6 +30,8 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+
+        <Route path='category/:categoryName' element={<Category />} />
 
         <Route
           path="signup"
