@@ -53,7 +53,7 @@ const App = () => {
         />
 
         <Route path="about" element={<AboutUs />} />
-        <Route path="blog" element={<Blog />} />
+        <Route path="blog" element={<Blog />} /> 
 
         <Route
           path="forgot-password"
