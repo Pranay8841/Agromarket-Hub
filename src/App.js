@@ -20,6 +20,7 @@ import MyProducts from './components/core/Dashboard/MyProducts'
 import AboutUs from './components/common/AboutUs'
 import EditProduct from './components/core/Dashboard/EditProduct'
 import Category from './pages/Category'
+import Blog from "./components/common/Blog";
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
