@@ -20,6 +20,8 @@ import MyProducts from './components/core/Dashboard/MyProducts'
 import AboutUs from './components/common/AboutUs'
 import EditProduct from './components/core/Dashboard/EditProduct'
 import Category from './pages/Category'
+import Blog from "./components/common/Blog";
+import ProductDetails from "./pages/ProductDetails";
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
@@ -33,6 +35,7 @@ const App = () => {
 
         <Route path='category/:categoryName' element={<Category />} />
 
+        <Route path="products/:productId" element={<ProductDetails />} />
         <Route
           path="signup"
           element={
@@ -52,7 +55,7 @@ const App = () => {
         />
 
         <Route path="about" element={<AboutUs />} />
-        <Route path="blog" element={<Blog />} />
+        <Route path="blog" element={<Blog />} /> 
 
         <Route
           path="forgot-password"
