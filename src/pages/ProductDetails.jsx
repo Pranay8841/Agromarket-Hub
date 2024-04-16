@@ -8,6 +8,8 @@ import { formatDate } from '../services/formatDate';
 import { HiOutlineGlobeAlt } from 'react-icons/hi';
 import ProductDetailsCard from '../components/core/Product/ProductDetailsCard';
 import ReactMarkdown from 'react-markdown'
+import ConfirmationModal from '../components/common/ConfirmationModal';
+import { buyProduct } from '../services/operations/paymentAPI';
 
 const ProductDetails = () => {
   const { user, loading } = useSelector((state) => state.profile);
@@ -55,11 +57,13 @@ const ProductDetails = () => {
     benefits,
     dealer,
     quantityAvailable,
+    customerEngaged,
     createdAt,
   } = response?.data
 
   const handleBuyProduct = () => {
     if (token) {
+      buyProduct(token, [productId], user, navigate, dispatch)
       return
     }
 
@@ -125,11 +129,13 @@ const ProductDetails = () => {
             <ProductDetailsCard
               product={response?.data}
               setConfirmationModal={setConfirmationModal}
-              handleBuyCourse={handleBuyProduct}
+              handleBuyProduct={handleBuyProduct}
             />
           </div>
         </div>
       </div>
+
+      {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </>
 
 

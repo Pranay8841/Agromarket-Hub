@@ -22,6 +22,7 @@ import EditProduct from './components/core/Dashboard/EditProduct'
 import Category from './pages/Category'
 import Blog from "./components/common/Blog";
 import ProductDetails from "./pages/ProductDetails";
+import MyOrders from "./components/core/Dashboard/MyOrders";
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
@@ -55,7 +56,7 @@ const App = () => {
         />
 
         <Route path="about" element={<AboutUs />} />
-        <Route path="blog" element={<Blog />} /> 
+        <Route path="blog" element={<Blog />} />
 
         <Route
           path="forgot-password"
@@ -94,6 +95,14 @@ const App = () => {
           <Route path="dashboard/my-profile" element={<MyProfile />} />
 
           <Route path="dashboard/Settings" element={<Settings />} />
+
+          {
+            user?.accountType === ACCOUNT_TYPE.FARMER && (
+              <>
+                <Route path="dashboard/my-orders" element={<MyOrders />} />
+              </>
+            )
+          }
 
           {
             user?.accountType === ACCOUNT_TYPE.DEALER && (
