@@ -60,20 +60,12 @@ const ProductDetailsCard = ({ product, setConfirmationModal, handleBuyProduct })
                     </div>
                     <div className="flex flex-col gap-4">
                         <button
-                            className="yellowButton"
-                            onClick={
-                                user
-                                    ? () => navigate("/dashboard/my-products")
-                                    : handleBuyProduct
-                            }
+                         onClick={handleBuyProduct}
                         >
-                            {user && (
-                                <button>
-                                    Buy Now
-                                </button>
-                            )}
+                            Buy Now 
                         </button>
-                        {(user) && (
+
+                        {(!user || !product.customerEngaged.includes(user?._id)) && (
                             <button onClick={handleAddToCart} className="blackButton">
                                 Add to Cart
                             </button>

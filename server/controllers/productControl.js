@@ -202,6 +202,7 @@ exports.getAllProducts = async (req, res) => {
                 thumbnail: true,
                 dealer: true,
                 quantityAvailable: true,
+                customerEngaged: true,
             }
         ).populate("dealer").exec();
 
@@ -333,6 +334,15 @@ exports.deleteProduct = async (req, res) => {
         if (!product) {
             return res.status(404).json({
                 message: "Product not found"
+            })
+        }
+
+        const customerEngaged = product.customerEngaged
+        for(const productId of customerEngaged){
+            await User.findByIdAndUpdate(productId, {
+                $pull: {
+                    products:productId,
+                }
             })
         }
 
