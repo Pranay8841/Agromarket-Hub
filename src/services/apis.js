@@ -9,6 +9,14 @@ export const endpoints = {
   RESETPASSWORD_API: BASE_URL + "/api/v1/auth/reset-password",
 }
 
+// PROFILE ENDPOINTS
+export const profileEndpoints = {
+  GET_USER_DETAILS_API: BASE_URL + "/api/v1/profile/getUserDetails",
+  GET_USER_ORDERS_API: BASE_URL + "/api/v1/profile/getMyOrders",
+  // GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
+}
+
+
 // FARMERS ENDPOINTS
 export const farmerEndpoints = {
   PRODUCT_PAYMENT_API: BASE_URL + "/api/v1/payment/capturePayment",
