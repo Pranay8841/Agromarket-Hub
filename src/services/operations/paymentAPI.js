@@ -115,7 +115,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
             throw new Error(response.data.data);
         }
         toast.success("payment Successful, Your order Placed");
-        // navigate("/dashboard/enrolled-courses");
+        navigate("/dashboard/my-orders");
         dispatch(resetCart());
     }   
     catch(error) {

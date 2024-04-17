@@ -23,6 +23,7 @@ import Category from './pages/Category'
 import Blog from "./components/common/Blog";
 import ProductDetails from "./pages/ProductDetails";
 import MyOrders from "./components/core/Dashboard/MyOrders";
+import Cart from "./components/core/Dashboard/Cart";
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
@@ -99,6 +100,7 @@ const App = () => {
           {
             user?.accountType === ACCOUNT_TYPE.FARMER && (
               <>
+                <Route path="dashboard/cart" element={<Cart />} />
                 <Route path="dashboard/my-orders" element={<MyOrders />} />
               </>
             )

@@ -107,6 +107,7 @@ exports.verifyPayment = async (req, res) => {
         .digest("hex")
 
     if (expectedSignature === razorpay_signature) {
+        await addOrder(products, userId, res);
         return res.status(200).json({
             success: true,
             message: "Payment Verified"
@@ -153,3 +154,62 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
         })
     }
 }
+
+// Add order to the User order list
+const addOrder = async (products, userId, res) => {
+    if (!products || !userId) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Please Provide Product ID and User ID" 
+      })
+    }
+  
+    for (const productId of products) {
+      try {
+        // Find the course and enroll the student in it
+        console.log("Before adding product")
+        const orderedProduct = await Product.findOneAndUpdate(
+          { _id: productId },
+          { new: true },
+        )
+  
+        if (!orderedProduct) {
+          return res.status(500).json({ 
+                success: false, 
+                error: "Course not found" 
+            })
+        }
+        console.log("Ordered Product: ", orderedProduct)
+  
+        // Find the User and add the Product to their list of Ordered Products
+        const orderedUser = await User.findByIdAndUpdate(
+          userId,
+          {
+            $push: {
+              products: productId,
+            },
+          },
+          { new: true }
+        )
+  
+        console.log("Enrolled student: ", orderedUser)
+        // Send an email notification to the enrolled student
+        const emailResponse = await mailSender(
+          orderedUser.email,
+          `Successfully Enrolled into ${orderedProduct.productName}`,
+          courseEnrollmentEmail(
+            orderedProduct.productName,
+            `${orderedUser.firstName} ${orderedUser.lastName}`
+          )
+        )
+  
+        console.log("Email sent successfully: ", emailResponse.response)
+      } catch (error) {
+        console.log(error)
+        return res.status(400).json({ 
+            success: false, 
+            error: error.message 
+        })
+      }
+    }
+  }
