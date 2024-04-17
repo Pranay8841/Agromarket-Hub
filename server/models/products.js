@@ -38,10 +38,29 @@ const productsSchema = new mongoose.Schema({
     benefits: {
         type: String,
     },
+    customerEngaged:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: "User"
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now
     },
+    isProcessed: {
+        type: Boolean,
+        default: false,
+    },
+    isShipped: {
+        type: Boolean,
+        default: false,
+    },
+    isDelivered: {
+        type: Boolean,
+        default: false,
+    }
 });
 
 module.exports = mongoose.model("Product", productsSchema)

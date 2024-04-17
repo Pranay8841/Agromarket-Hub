@@ -9,6 +9,21 @@ export const endpoints = {
   RESETPASSWORD_API: BASE_URL + "/api/v1/auth/reset-password",
 }
 
+// PROFILE ENDPOINTS
+export const profileEndpoints = {
+  GET_USER_DETAILS_API: BASE_URL + "/api/v1/profile/getUserDetails",
+  GET_USER_ORDERS_API: BASE_URL + "/api/v1/profile/getMyOrders",
+  // GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
+}
+
+
+// FARMERS ENDPOINTS
+export const farmerEndpoints = {
+  PRODUCT_PAYMENT_API: BASE_URL + "/api/v1/payment/capturePayment",
+  PRODUCT_VERIFY_API: BASE_URL + "/api/v1/payment/verifyPayment",
+  SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/api/v1/payment/sendPaymentSuccessEmail",
+}
+
 // PRODUCT ENDPOINTS
 export const productEndpoints = {
   CREATE_PRODUCT_API: BASE_URL + "/api/v1/product/createProduct",
@@ -29,6 +44,11 @@ export const categories = {
 // CATALOG PAGE DATA
 export const categoryPageData = {
   CATEGORYPAGEDATA_API: BASE_URL + "/api/v1/product/getCategoryPageDetails",
+}
+
+// CONTACT-US API
+export const contactusEndpoint = {
+  CONTACT_US_API: BASE_URL + "/api/v1/reach/contact",
 }
 
 // SETTINGS PAGE API
