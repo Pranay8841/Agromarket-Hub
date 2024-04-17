@@ -17,9 +17,8 @@ import AboutUs from "./components/common/AboutUs";
 import { useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import AddProduct from "./components/core/Dashboard/AddProduct";
-import MyProducts from './components/core/Dashboard/MyProducts'
-import AboutUs from './components/common/AboutUs'
-import EditProduct from './components/core/Dashboard/EditProduct'
+import MyProducts from "./components/core/Dashboard/MyProducts";
+import EditProduct from "./components/core/Dashboard/EditProduct";
 import Blog from "./components/common/Blog";
 
 const App = () => {
@@ -91,15 +90,16 @@ const App = () => {
 
           <Route path="dashboard/Settings" element={<Settings />} />
 
-          {
-            user?.accountType === ACCOUNT_TYPE.DEALER && (
-              <>
-                <Route path='dashboard/add-product' element={<AddProduct />} />
-                <Route path='dashboard/my-products' element={<MyProducts />} />
-                <Route path='dashboard/edit-product/:productId' element={<EditProduct />} />
-              </>
-            )
-          }
+          {user?.accountType === ACCOUNT_TYPE.DEALER && (
+            <>
+              <Route path="dashboard/add-product" element={<AddProduct />} />
+              <Route path="dashboard/my-products" element={<MyProducts />} />
+              <Route
+                path="dashboard/edit-product/:productId"
+                element={<EditProduct />}
+              />
+            </>
+          )}
         </Route>
 
         <Route path="*" element={<Error />} />
