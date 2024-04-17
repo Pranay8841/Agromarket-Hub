@@ -6,6 +6,7 @@ import { categories } from '../services/apis';
 import { getCategoryPageData } from '../services/operations/categoryPageAPI';
 import Error from "./Error"
 import ProductCard from '../components/core/Category/ProductCard';
+import Footer from '../components/common/Footer';
 
 const Category = () => {
     const { loading } = useSelector((state) => state.profile)
@@ -92,6 +93,8 @@ const Category = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
         </>
     )
 }
