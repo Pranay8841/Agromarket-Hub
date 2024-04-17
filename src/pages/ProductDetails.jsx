@@ -10,6 +10,7 @@ import ProductDetailsCard from '../components/core/Product/ProductDetailsCard';
 import ReactMarkdown from 'react-markdown'
 import ConfirmationModal from '../components/common/ConfirmationModal';
 import { buyProduct } from '../services/operations/paymentAPI';
+import Footer from '../components/common/Footer';
 
 const ProductDetails = () => {
   const { user, loading } = useSelector((state) => state.profile);
@@ -135,6 +136,8 @@ const ProductDetails = () => {
         </div>
       </div>
 
+      <Footer />
+      
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </>
 

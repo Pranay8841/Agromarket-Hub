@@ -24,6 +24,7 @@ import Blog from "./components/common/Blog";
 import ProductDetails from "./pages/ProductDetails";
 import MyOrders from "./components/core/Dashboard/MyOrders";
 import Cart from "./components/core/Dashboard/Cart";
+import Contact from "./pages/ContactUs";
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
@@ -85,6 +86,8 @@ const App = () => {
             </OpenRoute>
           }
         />
+
+        <Route path="/contact" element={<Contact />} />
 
         <Route
           element={

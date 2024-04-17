@@ -46,6 +46,11 @@ export const categoryPageData = {
   CATEGORYPAGEDATA_API: BASE_URL + "/api/v1/product/getCategoryPageDetails",
 }
 
+// CONTACT-US API
+export const contactusEndpoint = {
+  CONTACT_US_API: BASE_URL + "/api/v1/reach/contact",
+}
+
 // SETTINGS PAGE API
 export const settingsEndpoints = {
   UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/api/v1/profile/updateDisplayPicture",
