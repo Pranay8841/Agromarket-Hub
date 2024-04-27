@@ -8,6 +8,7 @@ import { logout } from "./authAPI"
 const {
   GET_USER_DETAILS_API,
   GET_USER_ORDERS_API,
+  GET_DEALER_DATA_API,
 } = profileEndpoints
 
 export function getUserDetails(token, navigate) {
@@ -63,4 +64,25 @@ export async function getUserOrders(token) {
   }
   toast.dismiss(toastId)
   return result
+}
+
+export async function getDealerData(token) {
+  const toastId = toast.loading("Loading...");
+  let result = [];
+  try{
+    const response = await apiConnector("GET", GET_DEALER_DATA_API, null, 
+    {
+      Authorization: `Bearer ${token}`,
+    })
+
+    console.log("GET_DEALER_API_RESPONSE", response);
+    result = response?.data?.products
+
+  }
+  catch(error) {
+    console.log("GET_DEALER_API ERROR", error);
+    toast.error("Could not Get Dealer Data")
+  }
+  toast.dismiss(toastId);
+  return result;
 }

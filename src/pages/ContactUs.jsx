@@ -14,7 +14,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Form */}
-        <div className="lg:w-[60%]">
+        <div className="lg:w-[60%] mb-10">
           <ContactForm />
         </div>
       </div>

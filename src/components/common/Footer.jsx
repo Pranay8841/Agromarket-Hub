@@ -10,17 +10,26 @@ import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
 const Resources = [
-  "Articles",
-  "Blog",
-  "Chart Sheet",
-  "Code challenges",
-  "Docs",
-  "Projects",
-  "Videos",
-  "Workspaces",
+  "Product Catalog",
+  "Machinery Guides",
+  "Seed Varieties",
+  "Pesticide Information",
+  "Insecticide Usage Tips",
+  "Fertilizer Recommendations",
+  "Crop Management Techniques",
+  "Market Trends Analysis",
 ];
-const Plans = ["Paid memberships", "For students", "Business solutions"];
-const Community = ["Forums", "Chapters", "Events"];
+
+const Plans = [
+  "Basic Membership",
+  "Premium Membership",
+  "Dealer Package",
+];
+const Community = [
+  "Discussion Forums",
+  "Local Chapters",
+  "Events & Workshops",
+];
 
 const Footer = () => {
   return (
@@ -171,7 +180,7 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="text-center">Made with ❤️ Pranay & Viraj © 2023 Agromarket Hub</div>
+          <div className="text-center">Made with ❤️ Pranay & Viraj © 2024 Agromarket Hub</div>
         </div>
       </div>
     </div>

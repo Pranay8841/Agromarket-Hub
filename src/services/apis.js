@@ -13,7 +13,7 @@ export const endpoints = {
 export const profileEndpoints = {
   GET_USER_DETAILS_API: BASE_URL + "/api/v1/profile/getUserDetails",
   GET_USER_ORDERS_API: BASE_URL + "/api/v1/profile/getMyOrders",
-  // GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
+  GET_DEALER_DATA_API: BASE_URL + "/api/v1/profile/dealerDashboard",
 }
 
 
