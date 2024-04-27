@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css"
 import Navbar from "./components/common/Navbar";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -25,6 +26,7 @@ import ProductDetails from "./pages/ProductDetails";
 import MyOrders from "./components/core/Dashboard/MyOrders";
 import Cart from "./components/core/Dashboard/Cart";
 import Contact from "./pages/ContactUs";
+import Dealer from "./components/core/Dashboard/DealerDashboard/Dealer";
 
 const App = () => {
   const { user } = useSelector((state) => state.profile);
@@ -111,6 +113,7 @@ const App = () => {
           {
             user?.accountType === ACCOUNT_TYPE.DEALER && (
               <>
+                <Route path="dashboard/dealer" element={<Dealer />} />
                 <Route path='dashboard/add-product' element={<AddProduct />} />
                 <Route path='dashboard/my-products' element={<MyProducts />} />
                 <Route path='dashboard/edit-product/:productId' element={<EditProduct />} />

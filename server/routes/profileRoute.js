@@ -1,14 +1,15 @@
 const express = require("express")
 const router = express.Router()
 
-const { auth } = require("../middlewares/authentication")
+const { auth, isDealer } = require("../middlewares/authentication")
 
 const {
     deleteAccount,
     updateProfile,
     getAllUserDetails,
     updateDisplayPicture,
-    getMyOrders
+    getMyOrders,
+    dealerDashboard,
 } = require("../controllers/profileControl")
 
 // Delet User Account
@@ -17,5 +18,6 @@ router.put("/updateProfile", auth, updateProfile)
 router.get("/getUserDetails", auth, getAllUserDetails)
 router.get("/getMyOrders", auth, getMyOrders)
 router.put("/updateDisplayPicture", auth, updateDisplayPicture)
+router.get("/dealerDashboard", auth, isDealer, dealerDashboard)
 
 module.exports = router

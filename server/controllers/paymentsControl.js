@@ -170,6 +170,9 @@ const addOrder = async (products, userId, res) => {
         console.log("Before adding product")
         const orderedProduct = await Product.findOneAndUpdate(
           { _id: productId },
+          {$push: {
+            customerEngaged: userId
+          }},
           { new: true },
         )
   
