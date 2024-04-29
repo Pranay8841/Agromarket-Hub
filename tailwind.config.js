@@ -131,6 +131,11 @@ module.exports = {
         maxContentTab: "650px"
       },
     },
+    variants: {
+      extend: {
+        display: ["group-hover"],
+      },
+    },
   },
   plugins: [],
 };

@@ -13,7 +13,7 @@ export default function Tab({ tabData, field, setField }) {
                     className={`${field === tab.type
                             ? "bg-richblue-300 text-white border border-richblue-200"
                             : "bg-transparent text-richblack-400"
-                        } py-2 px-5 rounded-full transition-all duration-200`}
+                        } py-2 px-8 rounded-full transition-all duration-200`}
                 >
                     {tab?.tabName}
                 </button>
