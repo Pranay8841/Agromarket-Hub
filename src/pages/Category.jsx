@@ -86,7 +86,7 @@ const Category = () => {
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
         <div className="py-4">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-4 sm:grid-cols-2">
-            {categoryPageData?.data?.mostSellingProducts
+            {categoryPageData?.data?.selectedCategory.products
               .map((product, i) => (
                 <ProductCard product={product} key={i} />
               ))}
