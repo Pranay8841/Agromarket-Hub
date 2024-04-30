@@ -17,6 +17,9 @@ const ProductDetailsCard = ({ product, setConfirmationModal, handleBuyProduct })
         thumbnail: ThumbnailImage,
         price: CurrentPrice,
         _id: productId,
+        productName: productName,
+        productDescription: prodDes,
+        dealer: dealer,
     } = product
 
     const handleShare = () => {
@@ -45,28 +48,45 @@ const ProductDetailsCard = ({ product, setConfirmationModal, handleBuyProduct })
     return (
         <>
             <div
-                className={`flex flex-col gap-4 rounded-md bg-richblue-400 border-[1px] border-richblue-300 p-4 text-richblack-5`}
+                className={`flex space-x-10 rounded-md bg-richblue-400 border-[1px] border-richblue-300 p-4 text-richblack-5 w-full h-full`}
             >
-                {/* Course Image */}
-                <img
-                    src={ThumbnailImage}
-                    alt={product?.productName}
-                    className="max-h-[300px] min-h-[180px] w-[400px] overflow-hidden rounded-2xl object-cover md:max-w-full"
-                />
+                <div className='pt-4 w-[60%]'>
+                    {/* Course Image */}
+                    <img
+                        src={ThumbnailImage}
+                        alt={product?.productName}
+                        className="max-h-[300px] min-h-[180px] w-[400px] overflow-hidden flex mx-auto rounded-2xl object-cover md:max-w-full"
+                    />
 
-                <div className="px-4">
-                    <div className="space-x-3 pb-4 text-3xl font-semibold">
-                        Rs. {CurrentPrice}
+                    <div className='px-4 pt-4'>
+                        <div className="space-x-3 text-2xl">
+                            {productName}
+                        </div>
+
+                        <div className="space-x-3 pt-2 text-richblack-200">
+                            {prodDes}
+                        </div>
+
+                        <div className="space-x-3 pb-4 pt-4 text-xl font-medium text-yellow-100">
+                            Produced By {dealer.firstName} {dealer.lastName}
+                        </div>
+                        <div className="space-x-3 pb-4 text-3xl font-semibold">
+                            Rs. {CurrentPrice}
+                        </div>
                     </div>
+
+                </div>
+                <div className="w-[60%] pt-10">
                     <div className="flex flex-col gap-4">
                         <button
-                         onClick={handleBuyProduct}
+                            className='cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblue-900'
+                            onClick={handleBuyProduct}
                         >
-                            Buy Now 
+                            Buy Now
                         </button>
 
                         {(!user || !product.customerEngaged.includes(user?._id)) && (
-                            <button onClick={handleAddToCart} className="blackButton">
+                            <button onClick={handleAddToCart} className="cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5">
                                 Add to Cart
                             </button>
                         )}
@@ -77,21 +97,6 @@ const ProductDetailsCard = ({ product, setConfirmationModal, handleBuyProduct })
                         </p>
                     </div>
 
-                    {/* <div className={``}>
-                        <p className={`my-2 text-xl font-semibold `}>
-                            This Course Includes :
-                        </p>
-                        <div className="flex flex-col gap-3 text-sm text-caribbeangreen-100">
-                            {product?.instructions?.map((item, i) => {
-                                return (
-                                    <p className={`flex gap-2`} key={i}>
-                                        <BsFillCaretRightFill />
-                                        <span>{item}</span>
-                                    </p>
-                                )
-                            })}
-                        </div>
-                    </div> */}
                     <div className="text-center">
                         <button
                             className="mx-auto flex items-center gap-2 py-6 text-yellow-100 "

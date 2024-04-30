@@ -1,5 +1,5 @@
 import React from "react";
-import TimeLineImage from "../../../assets/TimelineImage.png";
+import TimeLineImage from "../../../assets/Explore.png";
 import Logo1 from "../../../assets/TimeLineLogo/Logo1.svg";
 import Logo2 from "../../../assets/TimeLineLogo/Logo2.svg";
 import Logo3 from "../../../assets/TimeLineLogo/Logo3.svg";
@@ -58,7 +58,7 @@ const TimelineSection = () => {
                 <div className="relative w-fit h-fit shadow-blue-200 shadow-[0px_0px_30px_0px]">
                     <div className="absolute lg:left-[50%] lg:bottom-0 lg:translate-x-[-50%] lg:translate-y-[50%] bg-caribbeangreen-700 flex lg:flex-row flex-col text-white uppercase py-4 gap-2 lg:gap-0 lg:py-10 ">
                         {/* Section 1 */}
-                        <div className="flex gap-5 items-center lg:border-r border-caribbeangreen-300 px-5 lg:px-14">
+                        <div className="flex gap-2 items-center lg:border-r border-caribbeangreen-300 px-5 lg:px-14">
                             <h1 className="text-3xl font-bold w-[75px]">2</h1>
                             <h1 className="text-caribbeangreen-300 text-sm w-[75px]">
                                 Years experiences
@@ -66,7 +66,7 @@ const TimelineSection = () => {
                         </div>
 
                         {/* Section 2 */}
-                        <div className="flex gap-5 items-center lg:px-14 px-5">
+                        <div className="flex gap-2 items-center lg:px-14 px-5">
                             <h1 className="text-3xl font-bold w-[75px]">50</h1>
                             <h1 className="text-caribbeangreen-300 text-sm w-[75px]">
                                 Types of Produccts
