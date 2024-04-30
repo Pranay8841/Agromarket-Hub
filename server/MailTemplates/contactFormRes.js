@@ -34,6 +34,7 @@ exports.contactUsEmail = (
             .logo {
                 max-width: 200px;
                 margin-bottom: 20px;
+                border-radius: 10px;
             }
     
             .message {
@@ -74,8 +75,7 @@ exports.contactUsEmail = (
     
     <body>
         <div class="container">
-            <a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
-                    src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion Logo"></a>
+            <a href="#"><img class="logo" src="https://i.ibb.co/MZzkRSD/Mail-template.png" alt="Mail-template"></a>
             <div class="message">Contact Form Confirmation</div>
             <div class="body">
                 <p>Dear ${firstname} ${lastname},</p>
@@ -89,7 +89,7 @@ exports.contactUsEmail = (
                 <p>We appreciate your interest and will get back to you shortly. </p>
             </div>
             <div class="support">If you have any further questions or need immediate assistance, please feel free to reach
-                out to us at <a href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!</div>
+                out to us at <a href="mailto:info@agromarkethub.com">info@agromarkethub.com</a>. We are here to help!</div>
         </div>
     </body>
     

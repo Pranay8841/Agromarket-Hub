@@ -27,6 +27,7 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
               .logo {
                   max-width: 200px;
                   margin-bottom: 20px;
+                  border-radius: 10px;
               }
       
               .message {
@@ -67,9 +68,8 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
       
       <body>
           <div class="container">
-              <a href="https://studynotion-edtech-project.vercel.app"><img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png"
-                      alt="StudyNotion Logo"></a>
-              <div class="message">Course Payment Confirmation</div>
+              <a href="#"><img class="logo" src="https://i.ibb.co/MZzkRSD/Mail-template.png" alt="Mail-template"></a>
+              <div class="message">Order Payment Confirmation</div>
               <div class="body">
                   <p>Dear ${name},</p>
                   <p>We have received a payment of <span class='highlight'>₹${amount}</span></p>.
@@ -77,7 +77,7 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
                   <p>Your Order ID is <b>${orderId}</b></p>
               </div>
               <div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a
-                      href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!</div>
+                      href="mailto:info@agromarkethub.com">info@agromarkethub.com</a>. We are here to help!</div>
           </div>
       </body>
       

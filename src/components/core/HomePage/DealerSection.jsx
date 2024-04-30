@@ -1,7 +1,7 @@
 import React from 'react'
 import CTAButton from "../../../components/core/HomePage/Button";
 import { FaArrowRight } from "react-icons/fa";
-import Dealer from "../../../assets/Instructor.png";
+import Dealer from "../../../assets/Dealer.png";
 import HighlightText from './HighlightText';
 
 const DealerSection = () => {
