@@ -23,7 +23,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://agromarket-hub.onrender.com/api/v1",
     credentials: true,
   })
 )
