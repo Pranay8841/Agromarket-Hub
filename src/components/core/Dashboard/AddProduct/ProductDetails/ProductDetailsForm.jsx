@@ -23,6 +23,7 @@ const ProductDetailsForm = () => {
 
   const { token } = useSelector((state) => state.auth);
   const { product, editProduct } = useSelector((state) => state.product)
+  // console.log("Product apna", product)
 
   const [loading, setLoading] = useState(false);
   const [productCategories, setProductCategories] = useState([])
@@ -135,6 +136,7 @@ const ProductDetailsForm = () => {
     setLoading(true);
 
     const result = await addProductDetails(formData, token);
+    console.log("Product Result", result)
 
     if (result) {
       dispatch(setStep(2));
@@ -249,11 +251,11 @@ const ProductDetailsForm = () => {
         )}
       </div>
 
-      {/* Course Tags */}
+      {/* Product Tags */}
       <ChipInput
-        label="Tags"
+        label="Benefits/Advantages"
         name="productTags"
-        placeholder="Enter Tags and press Enter"
+        placeholder="Enter Benefits and press Enter"
         register={register}
         errors={errors}
         setValue={setValue}
@@ -270,24 +272,23 @@ const ProductDetailsForm = () => {
         editData={editProduct ? product?.thumbnail : null}
       />
 
-      {/* Benefits of the course */}
-      <div className="flex flex-col space-y-2">
-        <label className="text-sm text-white" htmlFor="productBenefits">
+       {/* Benefits of the Product
+       <div className="flex flex-col space-y-2">
+        <label className="text-sm text-richblack-5" htmlFor="courseBenefits">
           Benefits of the Product <sup className="text-pink-200">*</sup>
         </label>
-
         <textarea
           id="productBenefits"
-          placeholder="Enter benefits of the Product"
+          placeholder="Enter benefits of the course"
           {...register("productBenefits", { required: true })}
           className="resize-x-none min-h-[130px] w-full rounded-[0.5rem] bg-white p-[10px] text-richblack-700 border border-richblue-400"
         />
-        {errors.productBenefits && (
+        {errors.courseBenefits && (
           <span className="ml-2 text-xs tracking-wide text-pink-200">
             Benefits of the Product is required
           </span>
         )}
-      </div>
+      </div> */}
 
       {/* Product Quantity */}
       <div className="flex flex-col space-y-2">
