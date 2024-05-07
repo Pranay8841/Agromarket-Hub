@@ -48,11 +48,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pranay8841/Farmer_Market_Website.git"
+    "url": "git+https://github.com/Pranay8841/Agromarket-Hub.git"
   },
   "author": "PRANAY BHANDEKAR",
   "bugs": {
-    "url": "https://github.com/Pranay8841/Farmer_Market_Website/issues"
+    "url": "https://github.com/Pranay8841/Agromarket-Hub/issues"
   },
   "scripts": {
     "start": "react-scripts start",
