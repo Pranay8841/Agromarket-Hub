@@ -6,6 +6,7 @@ const { uploadImageToCloudinary } = require("../utils/imageUploader")
 exports.createProduct = async (req, res) => {
     try {
         const userId = req.user.id;
+        console.log("Request Body", req.body);
 
         let {
             productName,
@@ -15,13 +16,16 @@ exports.createProduct = async (req, res) => {
             category,
             status,
             quantityAvailable,
-            benefits,
         } = req.body;
 
+        // console.log(req.body)
+
         const thumbnail = req.files.thumbnailImage;
+        // console.log("Thumb")
+
+        console.log("_tag:", _tag);
 
         const tag = JSON.parse(_tag);
-
         console.log("Tag for Product", tag);
 
         if (
@@ -31,8 +35,7 @@ exports.createProduct = async (req, res) => {
             !tag.length ||
             !thumbnail ||
             !category ||
-            !quantityAvailable ||
-            !benefits
+            !quantityAvailable
         ) {
             return res.status(400).json({
                 success: false,
@@ -80,7 +83,6 @@ exports.createProduct = async (req, res) => {
             thumbnail: thumbnailImage.secure_url,
             status: status,
             quantityAvailable,
-            benefits: benefits,
         });
 
         await User.findByIdAndUpdate(

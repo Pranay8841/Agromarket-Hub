@@ -21,21 +21,22 @@ const AddProduct = () => {
         <div className="sticky top-10 hidden max-w-[400px] flex-1 rounded-md border-[1px] border-richblue-300 bg-richblue-400 p-6 xl:block">
           <p className="mb-8 text-lg text-white font-bold">⚡ Product Adding Tips</p>
           <ul className="ml-5 list-item list-disc space-y-4 text-xs text-richblack-100">
-            <li>Set the Course Price option or make it free.</li>
-            <li>Standard size for the course thumbnail is 1024x576.</li>
-            <li>Video section controls the course overview video.</li>
-            <li>Course Builder is where you create & organize a course.</li>
+            <li>Set prices for products or offer them for free.</li>
+            <li>Recommended image size for product thumbnails is 1024x576.</li>
+            <li>Manage product videos in the Video section.</li>
+            <li>Use the Product Builder to create and organize your products.</li>
             <li>
-              Add Topics in the Course Builder section to create lessons,
-              quizzes, and assignments.
+              Add categories in the Product Builder section to group similar products
+              together.
             </li>
             <li>
-              Information from the Additional Data section shows up on the
-              course single page.
+              Additional information from the Description section will be displayed on
+              the product details page.
             </li>
-            <li>Make Announcements to notify any important</li>
-            <li>Notes to all enrolled students at once.</li>
+            <li>Use Announcements to notify customers about important updates.</li>
+            <li>Send Notes to all registered customers at once.</li>
           </ul>
+
         </div>
       </div>
     </>

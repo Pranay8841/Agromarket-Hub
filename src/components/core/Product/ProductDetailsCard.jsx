@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { ACCOUNT_TYPE } from '../../../utils/constants'
 import { addToCart } from '../../../slices/cartSlice'
 import { FaShareSquare } from 'react-icons/fa'
+import { BsFillCaretRightFill } from "react-icons/bs"
 
 const ProductDetailsCard = ({ product, setConfirmationModal, handleBuyProduct }) => {
     const { user } = useSelector((state) => state.profile)
@@ -20,6 +21,7 @@ const ProductDetailsCard = ({ product, setConfirmationModal, handleBuyProduct })
         productName: productName,
         productDescription: prodDes,
         dealer: dealer,
+        tag: tags,
     } = product
 
     const handleShare = () => {
@@ -104,6 +106,22 @@ const ProductDetailsCard = ({ product, setConfirmationModal, handleBuyProduct })
                         >
                             <FaShareSquare size={15} /> Share
                         </button>
+                    </div>
+
+                    <div className="border-[1px] border-richblue-300 bg-richblue-400 p-4">
+                        <p className={`my-2 text-xl font-semibold `}>
+                            The Benefits of Product:
+                        </p>
+                        <div className="flex flex-col gap-3 text-sm text-caribbeangreen-100">
+                            {tags.map((tag, i) => {
+                                return (
+                                    <p className={`flex gap-2`} key={i}>
+                                        <BsFillCaretRightFill />
+                                        <span>{tag}</span>
+                                    </p>
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

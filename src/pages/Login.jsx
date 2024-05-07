@@ -5,9 +5,9 @@ import loginImg from "../assets/Secure login.gif"
 function Login() {
     return (
         <Template
-            title="Welcome Back"
-            desc1="Build skills for today, tomorrow, and beyond."
-            desc2="Education to future-proof your career."
+            title="Welcome to Agromarket Hub - a Farmer's Market"
+            desc1="Discover everything you need for successful farming."
+            desc2="Quality products and resources to support your agriculture journey."
             image={loginImg}
             formType="login"
         />
